@@ -45,7 +45,7 @@ Choose a number of things from the list and invest your time wisely.
 * Production-readiness
   * Browser support
   * Load speed (First meaningful paint, first contentful paint, interaction ready)
-* Technology-used
+* Technology-used (Examples:)
   * Code splitting
   * Lazy loading
   * ES6
