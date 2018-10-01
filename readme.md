@@ -2,8 +2,8 @@
 
 Create a weather widget for use in the webbrowser that provides us with a weather forecast.
 
-We recommend using the free DarkSky API: https://darksky.net/dev
-We included an 'icons' folder for your use.
+We've included an 'icons' folder for your use.  
+We recommend using the free DarkSky [weather API](https://darksky.net/dev). You can register a free account which will allow for up to a thousand requests per day.
 
 **Things to consider:**
 
