@@ -2,8 +2,11 @@
 
 Create a weather widget for use in the webbrowser that provides us with a weather forecast.
 
-We've included an 'icons' folder for your use.  
-We recommend using the free DarkSky [weather API](https://darksky.net/dev). You can register a free account which will allow for up to a thousand requests per day.
+We've included an 'icons' folder for your use.
+
+We recommend using the free DarkSky [weather API](https://darksky.net/dev).
+You can register a free account which will allow for up to a thousand requests per day.
+Note; the DarkSky API does not provide CORS headers, you will need to either use a public [CORS anywhere](https://cors-anywhere.herokuapp.com/) service, or [include your own](https://www.karolisram.com/cors-from-anywhere/) within the project
 
 **Things to consider:**
 
