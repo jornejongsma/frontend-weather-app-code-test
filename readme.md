@@ -4,9 +4,8 @@ Create a weather widget for use in the webbrowser that provides us with a weathe
 
 We've included an 'icons' folder for your use.
 
-We recommend using the free DarkSky [weather API](https://darksky.net/dev).
-You can register a free account which will allow for up to a thousand requests per day.
-Note; the DarkSky API does not provide CORS headers, you will need to either use a public [CORS anywhere](https://cors-anywhere.herokuapp.com/) service (see also: [link](https://www.karolisram.com/cors-from-anywhere/)), or [include your own](https://www.npmjs.com/package/cors-anywhere) within the project
+We recommend using [Climacell weather-api](https://www.climacell.co/weather-api/) or [Openweathermap](https://openweathermap.org/api/one-call-apia) for fetching the data.
+Note; the API's do not provide CORS headers, you will need to either use a public [CORS anywhere](https://cors-anywhere.herokuapp.com/) service (see also: [link](https://www.karolisram.com/cors-from-anywhere/)), or [include your own](https://www.npmjs.com/package/cors-anywhere) within the project
 
 **Things to consider:**
 
