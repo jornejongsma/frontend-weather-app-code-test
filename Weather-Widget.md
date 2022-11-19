@@ -27,3 +27,6 @@
   * Rain
   * Wind
 
+## Keys and .env
+
+Usually key and .env files are added to the `.gitignore`, but for a convenient installation this is omitted, so it is included when you'd clone this repo.

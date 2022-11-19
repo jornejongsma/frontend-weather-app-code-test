@@ -44,6 +44,8 @@
     "@storybook/builder-webpack4": "^6.5.13",
     "@storybook/manager-webpack4": "^6.5.13",
     "@storybook/web-components": "^6.5.13",
+    "@types/express": "^4.17.14",
+    "@types/node": "^18.11.9",
     "babel-loader": "^8.3.0",
     "lit-html": "^2.4.0",
     "rollup": "^2.79.1",
