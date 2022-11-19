@@ -23,7 +23,7 @@ export default [
       }
     },
     plugins: [
-      typescript({ tsconfig: './tsconfig.json' }),
+      typescript({ tsconfig: './tsconfig.build.json' }),
       replace({ 'Reflect.decorate': 'undefined', preventAssignment: true }),
       nodeResolve(),
       summary({ showGzippedSize: true, showMinifiedSize: true }),
