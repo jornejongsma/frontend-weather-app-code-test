@@ -16,13 +16,16 @@ app.use(express.static("storybook-static"));
 app.get("/", (req, res) => res.send("hello world"));
 
 app.get("/currentweather", async (req, res) => {
-  const lat = req.query.lat ?? "53.216822";
-  const lon = req.query.lon ?? "6.567153";
-  const units = req.query.units ?? "metric";
-  const lang = req.query.units ?? "nl";
+  const {
+    lat = "53.216822",
+    lon = "6.567153",
+    units = "metric",
+    lang = "nl",
+  } = req.query;
 
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=${units}&lang=${lang}`;
 
+  // TODO: catch 400 and 401 (wrong api key)
   const { data } = await axios({
     url,
     responseType: "json",
