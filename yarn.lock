@@ -6053,7 +6053,7 @@ lit-html@^2.2.0, lit-html@^2.4.0:
   dependencies:
     "@types/trusted-types" "^2.0.2"
 
-lit@^2.4.1:
+lit@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lit/-/lit-2.4.1.tgz#21251ac14eb1ec8ca7cd15c9ac3564359809f7b5"
   integrity sha512-qohSgLiyN1cFnJG26dIiY03S4F49857A0AHQfnS0zYtnUVnD2MFvx+UT52rtXsIuNFQrnUupX+zyGSATlk1f/A==

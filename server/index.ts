@@ -11,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 app.use(express.static("storybook-static"));
+app.use("/playwright-report", express.static("playwright-report"));
 
 // This should be a route to a main overview, maybe the storybook?
 app.get("/", (req, res) => res.send("hello world"));
