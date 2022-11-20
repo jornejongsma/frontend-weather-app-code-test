@@ -23,9 +23,9 @@
     //     "declaration": true,
     //     "declarationMap": true,
     //     "declarationDir": "dist",
-    "typeRoots": [
-      "./src/shared"
-    ], 
+    // "typeRoots": [
+    //   "./src/shared"
+    // ], 
     //     "sourceMap": true,
     //     "inlineSources": true,
     // "outDir": "./build",

@@ -25,7 +25,9 @@ class LoadSVGDirective extends AsyncDirective {
   loader (name: string) {
 
   // TODO: catch this.
-  import(`./svg/${name}.ts`)
+  // HACK: All svg files are now generated and than copied to the public folder, that copying should not be necessary... 
+  // BUG: .js or .ts, when in Storybook , .ts works, when build it is .js 
+  import(`./svg/${name}.js`)
     .then((module) => {
       const svg = <WeatherSVG>module.default
       this.content = html`<svg xmlns="http://www.w3.org/2000/svg" height="${this.size}" width="${this.size}" viewBox="0 0 30 30">${svg(this.color)}</svg>`

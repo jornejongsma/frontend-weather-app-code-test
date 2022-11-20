@@ -11,7 +11,7 @@ import summary from 'rollup-plugin-summary';
 export default [
   {
     // input: ['src/*.ts', 'learn/*.ts'],
-    input: ['src/*.ts'],
+    input: ['src/*.ts', 'src/shared/svg/*.ts'],
     output: {
       dir: 'dist/',
       format: 'esm',
@@ -25,7 +25,7 @@ export default [
     plugins: [
       typescript({ tsconfig: './tsconfig.build.json' }),
       replace({ 'Reflect.decorate': 'undefined', preventAssignment: true }),
-      nodeResolve(),
+      nodeResolve({ extensions: ['.js', '.ts', '.tsx', '.svg']}),
       summary({ showGzippedSize: true, showMinifiedSize: true }),
       terser({
         ecma: 2017,
