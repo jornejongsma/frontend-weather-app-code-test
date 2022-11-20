@@ -22,12 +22,15 @@ class LoadSVGDirective extends AsyncDirective {
     return this.render(svg);
   }
 
-  async loader (svg: string) {
-    // TODO: catch this.
-    const module = await import(`./svg/${svg}.svg`)
-    const content = html`<svg xmlns="http://www.w3.org/2000/svg" height="${this.size}" width="${this.size}" viewBox="0 0 30 30">${module.default(this.color)}</svg>`
-    this.content = content
-    this.setValue(content)
+  loader (name: string) {
+
+  // TODO: catch this.
+  import(`./svg/${name}.svg`)
+    .then((module) => {
+      const svg = <WeatherSVG>module.default
+      this.content = html`<svg xmlns="http://www.w3.org/2000/svg" height="${this.size}" width="${this.size}" viewBox="0 0 30 30">${svg(this.color)}</svg>`
+      this.setValue(this.content) // This actually updates the component, setting just the property is not enough
+    })
   }
 
   render(svg: string, options?: Options){

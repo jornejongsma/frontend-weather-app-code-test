@@ -1,12 +1,21 @@
 import * as dotenv from "dotenv";
 import express from "express";
+import type { Express, Request, Response, NextFunction } from "express";
+import cors from "cors";
 import axios from "axios";
+import { InMemoryDB } from "./inmemory-db";
 
 dotenv.config();
 
 const { OPENWEATHER_API_KEY, PORT } = process.env;
 
-const app = express();
+const app: Express = express();
+
+app.use(
+  cors({
+    origin: ["http://localhost:6006", "http://192.168.178.20:6006"],
+  })
+);
 
 app.use(express.json());
 app.use(express.static("public"));
@@ -14,25 +23,63 @@ app.use(express.static("storybook-static"));
 app.use("/playwright-report", express.static("playwright-report"));
 
 // This should be a route to a main overview, maybe the storybook?
-app.get("/", (req, res) => res.send("hello world"));
+app.get("/tester", (req, res) => res.send("hello world"));
 
-app.get("/currentweather", async (req, res) => {
-  const {
-    lat = "53.216822",
-    lon = "6.567153",
-    units = "metric",
-    lang = "nl",
-  } = req.query;
+async function getGeoLocation(req: Request, res: Response, next: NextFunction) {
+  const location = <string>req.query.location ?? "Groningen";
+  const key = location.toLowerCase();
 
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=${units}&lang=${lang}`;
+  if (InMemoryDB.has(key)) {
+    next();
+    return;
+  }
 
-  // TODO: catch 400 and 401 (wrong api key)
   const { data } = await axios({
-    url,
+    url: `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=2&appid=${OPENWEATHER_API_KEY}`,
     responseType: "json",
   });
 
-  res.json(data);
+  const { name, lat, lon } = data[0];
+
+  InMemoryDB.set(key, { name, lat, lon });
+
+  next();
+}
+
+async function getWeatherData(req: Request, res: Response, next: NextFunction) {
+  const { units = "metric", lang = "nl" } = req.query; //default values
+  const location = <string>req.query.location ?? "Groningen";
+  const key = location.toLowerCase();
+
+  if(InMemoryDB.get(key).data){
+    next();
+    return;
+
+  } else {
+    const { lat, lon } = InMemoryDB.get(key);
+  
+    // TODO: catch 400 and 401 (wrong api key)
+    const { data } = await axios({
+      url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=${units}&lang=${lang}`,
+      responseType: "json",
+    });
+
+    InMemoryDB.set(key, {
+      ...InMemoryDB.get(key),
+      data
+    })
+  }
+
+  next()
+}
+
+app.get("/currentweather", getGeoLocation, getWeatherData, async (req, res) => {
+  const location = <string>req.query.location ?? "Groningen";
+  const key = location.toLowerCase();
+  const { data } = InMemoryDB.get(key)
+
+  res.send(data)
+  
 });
 
 app.listen(PORT, () => {

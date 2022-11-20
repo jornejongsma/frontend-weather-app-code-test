@@ -1,10 +1,7 @@
 import { LitElement, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import {until} from 'lit/directives/until.js';
-
-
-
 import {loadSVG} from '../../shared/async-svg'
+import {until} from 'lit/directives/until.js';
 
 @customElement('weather-svg-overview')
 export class WeatherSvgOverview extends LitElement {
