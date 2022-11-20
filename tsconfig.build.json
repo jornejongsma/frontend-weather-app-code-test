@@ -48,7 +48,6 @@
     //         "strict": true
     //       }
     //     ]
-    ,
       "plugins": [
       {
         "name": "ts-lit-plugin",
