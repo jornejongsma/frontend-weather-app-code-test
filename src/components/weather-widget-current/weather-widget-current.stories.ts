@@ -5,6 +5,6 @@ export default {
   title: 'Weather Widgets/weather-widget-current'
 };
 
-export const WeatherWidgetCurrent = () => html`<weather-widget-current></weather-widget-current>`;
+export const WeatherWidgetCurrent = () => html`<weather-widget-current color="white" location="Amsterdam" background-color="blue"></weather-widget-current>`;
     
     
