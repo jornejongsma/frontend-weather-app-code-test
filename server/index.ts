@@ -13,7 +13,7 @@ const app: Express = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:6006", "http://192.168.178.20:6006", "http://127.0.0.1:5500", "http://192.168.178.20:8080", "http://localhost:8080"],
+    origin: ["http://localhost:6006", "http://192.168.178.20:6006", "http://127.0.0.1:5500", "http://192.168.178.20:8080", "http://localhost:8080", "http://localhost:3000"],
   })
 );
 
@@ -22,6 +22,7 @@ app.use(express.static("public"));
 app.use(express.static("dist"));
 app.use(express.static("storybook-static"));
 app.use("/playwright-report", express.static("playwright-report"));
+app.use("/example", express.static("example"));
 
 // This should be a route to a main overview, maybe the storybook?
 app.get("/tester", (req, res) => res.send("hello world"));
