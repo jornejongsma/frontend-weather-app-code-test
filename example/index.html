@@ -5,10 +5,29 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weather Widget Example</title>
-  <script  type="module" src="http://localhost:3000/hello-world.js"></script>
   <script  type="module" src="http://localhost:3000/weather-widget-current.js"></script>
+  <style>
+    ul {
+      display:flex;
+    }
+
+    li {
+      margin: 20px;
+      list-style-type: none;
+    }
+  </style>
 </head>
 <body>
-  <weather-widget-current color="white" location="Groningen" background-color="blue"></weather-widget-current>
+  <ul>
+    <li>
+      <weather-widget-current show-location ></weather-widget-current>
+    </li>
+    <li>
+      <weather-widget-current color="#000000" location="Amsterdam" background-color="#ff004d" show-location=""></weather-widget-current>
+    </li>
+    <li>
+      <weather-widget-current color="#ddffb1" location="Melbourne" background-color="#00ae31"></weather-widget-current>
+    </li>
+  </ul>
 </body>
 </html>
