@@ -22,7 +22,7 @@ Great!
 
 * Firts build the frontend with lollup: `yarn dist`, this creats a buidl in a **dist** folder.
 * Than again run `yarn serve`
-* In the **example** folder, ther is a **index.html**, when you go to `http://localhost:3000/example/`, this should show a simple example.
+* When you go to `http://localhost:3000/example/`, this should show a simple example.
 
 
 
