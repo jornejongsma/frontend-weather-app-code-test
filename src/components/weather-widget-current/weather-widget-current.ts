@@ -1,7 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import {loadSVG} from '../../shared/async-svg'
-import styles from './styles'
 
 type WeatherData = {
   temp: number,
@@ -26,23 +25,37 @@ export class WeatherWidgetCurrent extends LitElement {
   @state()
   data?: WeatherData;
 
+  getWeatherData() {
+    fetch(`http://192.168.178.20:3000/currentweather?location=${this.location}`)
+    .then(res => res.json())
+    .then(data => {
+      
+      this.data = {
+        temp: data.main.temp,
+        weather: {
+          description: data.weather[0].description,
+          icon: data.weather[0].icon
+        } 
+      }
+      this.requestUpdate()
+    })
+  }
+
   connectedCallback() {
     super.connectedCallback();
-
-    fetch(`http://192.168.178.20:3000/currentweather?location=${this.location}`)
-      .then(res => res.json())
-      .then(data => {
-        
-        this.data = {
-          temp: data.main.temp,
-          weather: {
-            description: data.weather[0].description,
-            icon: data.weather[0].icon
-          } 
-        }
-        this.requestUpdate()
-      })
+    this.getWeatherData()
   }
+
+  shouldUpdate(changedProps: any) {
+    if (changedProps.has('location')) {
+      this.getWeatherData()
+    }
+    return true
+  }
+
+  firstUpdated() {}
+
+  updated() {}
 
   static styles = css`
   .container {
