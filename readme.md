@@ -45,4 +45,12 @@ In the **Weather Widgets** map you can play with different settings of the web-c
 
 Pritty cool, don't you think?!
 
+## Playwright e2e tests
 
+At the moment there no real tests written, there is just for every component a test file setup to start swith it.
+
+## Running tests
+
+* Run the server: `yarn serve`
+* Run Storybook: `yarn storybook`
+* And in a 3rd terminal: `yarn test`
