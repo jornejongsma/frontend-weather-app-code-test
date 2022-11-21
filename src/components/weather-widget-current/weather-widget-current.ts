@@ -7,7 +7,8 @@ type WeatherData = {
   weather: {
     description: string,
     icon: string
-  }
+  },
+  name: string
 }
 
 @customElement("weather-widget-current")
@@ -21,21 +22,24 @@ export class WeatherWidgetCurrent extends LitElement {
   @property({ type: String, attribute: 'background-color'})
   backgroundColor = "green"
 
+  @property({type: Boolean, attribute: 'show-location'})
+  isLocation = false
 
   @state()
   data?: WeatherData;
 
   getWeatherData() {
-    fetch(`http://192.168.178.20:3000/currentweather?location=${this.location}`)
+    fetch(`http://localhost:3000/currentweather?location=${this.location}`)
     .then(res => res.json())
     .then(data => {
-      
+  
       this.data = {
         temp: data.main.temp,
         weather: {
           description: data.weather[0].description,
           icon: data.weather[0].icon
-        } 
+        },
+        name: data.name
       }
       this.requestUpdate()
     })
@@ -70,10 +74,15 @@ export class WeatherWidgetCurrent extends LitElement {
     border-radius: 15px;
     padding: 10px;
   }
+
+  .location{
+    font-size: 1rem;
+  }
 `;
 
   render() {
     return html`<div class="container" style="background-color:${this.backgroundColor}; color:${this.color};">
+      ${this.isLocation ? html`<div class="location">${this.data?.name}</div>` : undefined}
       ${this.data?.weather?.icon && loadSVG(this.data?.weather?.icon, {color: this.color})}
       <div>${this.data?.temp &&Math.round(this.data.temp)}°</div>
     </div>`;

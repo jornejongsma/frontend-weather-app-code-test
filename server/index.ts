@@ -78,6 +78,7 @@ app.get("/currentweather", getGeoLocation, getWeatherData, async (req, res) => {
   const location = <string>req.query.location ?? "Groningen";
   const key = location.toLowerCase();
   const { data } = InMemoryDB.get(key)
+  // console.log(data)
 
   res.send(data)
   

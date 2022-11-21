@@ -4,7 +4,7 @@ import './weather-widget-current';
 export default {
   title: 'Weather Widgets/weather-widget-current',
   argTypes: {
-    location: {
+    Location: {
       options: ['Groningen', 'Amsterdam', "New York", "Paris", "CapeTown", "Melbourne", "Tokyo"],
       control: {type: 'select'},
     }
@@ -13,12 +13,13 @@ export default {
 
 interface args {
   color: string;
-  location: string;
+  Location: string;
   backgroundColor: string;
+  isLocation: boolean;
 }
 
-const Template = ({color, location, backgroundColor}: args) => {
-  return html`<weather-widget-current color=${color} location=${location} background-color=${backgroundColor}></weather-widget-current>`
+const Template = (args: args) => {
+  return html`<weather-widget-current color=${args.color} location=${args.Location} background-color=${args.backgroundColor} ?show-location=${args.isLocation}></weather-widget-current>`
 }
 
 export const WeatherWidgetCurrent: any = Template.bind({});
@@ -28,6 +29,7 @@ export const WeatherWidgetCurrent: any = Template.bind({});
 WeatherWidgetCurrent.storyName = "Weather Widget Current variants";
 WeatherWidgetCurrent.args = {
   color: "white",
-  location: "Groningen",
-  backgroundColor: "blue"
+  Location: "Groningen",
+  backgroundColor: "blue",
+  isLocation: false
 }
