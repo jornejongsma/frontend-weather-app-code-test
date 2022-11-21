@@ -2,11 +2,11 @@
 
 ## Motivation
 
-The weather app is build with Lit, and Storybook. It has the option to end-to-end test it with Playwright.
+The weather app is build with Lit and Storybook. It has the option to end-to-end test it with Playwright.
 
-Lit enambles you to create web-components that can be easily be implemented in any kind of framework, or without, it's *framwork agnostic*.
+Lit enambles you to create web-components that can easily be implemented in any kind of framework or without, it's *framwork agnostic*.
 
-Storybook gives a nice way to develop, present and document a library of componets. In this example I've create a web-component, that has a few attributes to play with.
+Storybook gives you a nice way to develop, present and document a library of componets. In this example I've create a web-component, that has a few attributes to play with.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Storybook gives a nice way to develop, present and document a library of compone
 * `yarn serve`, will run the backend server;
 * In a second terminal run `yarn storybook`, to start Storybook in dev-mode.
 
-### Frontend build
+## Frontend build
 
 * To create a static Storybook build: `yarn build-storybook`
 * Now to run this, use `yarn serve`, to start the server.
@@ -26,7 +26,7 @@ Storybook gives a nice way to develop, present and document a library of compone
 
 Great!
 
-### Runnig a simple example
+## Runnig a simple example
 
 * Firts build the frontend with lollup: `yarn dist`, this creats a buidl in a **dist** folder.
 * Than again run `yarn serve`
@@ -41,13 +41,13 @@ In the **Weather Widgets** map you can play with different settings of the web-c
 * weather location;
 * show location;
 
-> When you swith the view from **Canvas** to **Docs**, there's a button that will show you the code to implement the web-component with current settings.
+> When you switch the view from **Canvas** to **Docs**, there's a button that will show you the code to implement the web-component with current settings.
 
-Pritty cool, don't you think?!
+Pretty cool, don't you think?!
 
 ## Playwright e2e tests
 
-At the moment there no real tests written, there is just for every component a test file setup to start swith it.
+At the moment there are no real tests written, there's just for every component a test file setup to start with it.
 
 ## Running tests
 
