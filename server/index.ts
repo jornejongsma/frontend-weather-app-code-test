@@ -60,6 +60,7 @@ async function getWeatherData(req: Request, res: Response, next: NextFunction) {
     const { lat, lon } = InMemoryDB.get(key);
   
     // TODO: catch 400 and 401 (wrong api key)
+    // TODO: add stale timer
     const { data } = await axios({
       url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API_KEY}&units=${units}&lang=${lang}`,
       responseType: "json",

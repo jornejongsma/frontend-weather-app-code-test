@@ -24,8 +24,6 @@ const Template = (args: args) => {
 
 export const WeatherWidgetCurrent: any = Template.bind({});
 
-// export const WeatherWidgetCurrent = () => html`<weather-widget-current color="white" location="Amsterdam" background-color="blue"></weather-widget-current>`;
-    
 WeatherWidgetCurrent.storyName = "Weather Widget Current variants";
 WeatherWidgetCurrent.args = {
   color: "white",
